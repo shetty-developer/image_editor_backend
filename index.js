@@ -3,6 +3,7 @@ import cors from "cors";
 import imageupload from "express-fileupload";
 import sharp from "sharp";
 
+
 const app = express();
 
 const port = 5000;
@@ -22,6 +23,9 @@ app.use(imageupload());
 app.get("/", (req, res) => {
   res.json({ message: "Backend is ready" });
 });
+
+
+
 
 app.post("/uploadimage", (req, res) => {
   console.log(req.files);
