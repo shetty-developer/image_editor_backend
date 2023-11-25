@@ -1,11 +1,12 @@
 const sharp = require("sharp");
 
-const blurController = (req, res) => {
+const SharpenController = (req, res) => {
+  
   const imageInput = req.files.imagefile.data;
   const contentType = req.files.imagefile.mimetype;
 
   sharp(imageInput)
-    .blur(5)
+    .sharpen()
     .toBuffer()
     .then((data) => {
       const base64Data = data.toString("base64");
@@ -17,4 +18,4 @@ const blurController = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = blurController;
+module.exports = SharpenController;

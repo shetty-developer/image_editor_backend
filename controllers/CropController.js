@@ -1,11 +1,11 @@
 const sharp = require("sharp");
 
-const blurController = (req, res) => {
+const CropController = (req, res) => {
   const imageInput = req.files.imagefile.data;
   const contentType = req.files.imagefile.mimetype;
 
   sharp(imageInput)
-    .blur(5)
+    .extract({ width: 500, height: 330, left: 120, top:20 })
     .toBuffer()
     .then((data) => {
       const base64Data = data.toString("base64");
@@ -17,4 +17,4 @@ const blurController = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = blurController;
+module.exports = CropController;

@@ -1,13 +1,12 @@
 const sharp = require("sharp");
 
-const resizeController = (req, res) => {
+const CompressJpegController = (req, res) => {
     
-    const imageInput = req.files.imagefile.data;
-    const contentType = req.files.imagefile.mimetype;
+  const imageInput = req.files.imagefile.data;
+  const contentType = req.files.imagefile.mimetype;
   
     sharp(imageInput)
-      .resize(512, 512)
-      .png()
+      .gif()
       .toBuffer()
       .then((data) => {
         const base64Data = data.toString("base64");
@@ -19,4 +18,4 @@ const resizeController = (req, res) => {
       .catch((err) => console.log(err));
 };
 
-module.exports = resizeController;
+module.exports = CompressJpegController;
