@@ -3,20 +3,23 @@ const express = require('express');
 const router = express.Router(); 
 
 //Controller imports
-import BlurController from "../controllers/BlurController";
-import compressController from "../controllers/CompressController";
-import convertFormatController from "../controllers/ConvertformatController";
-import removeBgController from "../controllers/RemovebgController";
-import resizeController from "../controllers/ResizeController";
-import watermarkController from "../controllers/WatermarkController";
+const BlurController = require( "../controllers/BlurController");
+const compressController =require("../controllers/CompressController");
+const convertFormatController = require("../controllers/ConvertformatController");
+const removeBgController = require( "../controllers/RemovebgController");
+const resizeController = require("../controllers/ResizeController");
+const watermarkController = require("../controllers/WatermarkController");
+const blurController = require('../controllers/BlurController');
 
 
 //routes
-router.post("/blur",BlurController)
-router.post("/compress",compressController);
-router.post("/convertformat",convertFormatController);
-router.post("/rmbg",removeBgController);
-router.post("/resize",resizeController);
-router.post("/watermark",watermarkController);
+
+router.route("/blur").post(blurController);
+router.route("/compress").post(compressController);
+router.route("/convertformat").post(convertFormatController);
+router.route("/rmbg").post(removeBgController);
+router.route("/resize").post(resizeController);
+router.route("/watermark").post(watermarkController);
 
 module.exports = router;
+

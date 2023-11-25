@@ -1,8 +1,8 @@
-import express from "express";
-import cors from "cors";
-import imageupload from "express-fileupload";
-import sharp from "sharp";
-
+const express = require("express");
+const cors = require("cors");
+const imageupload = require("express-fileupload");
+const sharp = require("sharp");
+const routes = require("./routes/index");
 
 const app = express();
 
@@ -20,12 +20,11 @@ app.use(
 
 app.use(imageupload());
 
-app.get("/", (req, res) => {
-  res.json({ message: "Backend is ready" });
-});
+app.use("/api",routes);
 
-
-
+// app.get("/", (req, res) => {
+//   res.json({ message: "Backend is ready" });
+// });
 
 app.post("/uploadimage", (req, res) => {
   console.log(req.files);
