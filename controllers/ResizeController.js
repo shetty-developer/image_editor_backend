@@ -6,7 +6,7 @@ const resizeController = (req, res) => {
     const contentType = req.files.imagefile.mimetype;
   
     sharp(imageInput)
-      .resize(512, 512)
+      .resize(426, 372)
       .png()
       .toBuffer()
       .then((data) => {

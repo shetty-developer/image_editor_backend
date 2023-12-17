@@ -5,7 +5,7 @@ const CropController = (req, res) => {
   const contentType = req.files.imagefile.mimetype;
 
   sharp(imageInput)
-    .extract({ width: 500, height: 330, left: 120, top:20 })
+    .extract()
     .toBuffer()
     .then((data) => {
       const base64Data = data.toString("base64");

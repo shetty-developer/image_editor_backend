@@ -4,9 +4,11 @@ const RotateController = (req, res) => {
   
   const imageInput = req.files.imagefile.data;
   const contentType = req.files.imagefile.mimetype;
+  const rotateDegree = req.rotateDegree;
+
 
   sharp(imageInput)
-    .rotate(360)
+    .rotate(rotateDegree)
     .toBuffer()
     .then((data) => {
       const base64Data = data.toString("base64");
